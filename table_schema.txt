@@ -1,0 +1,33 @@
+                            Table "public.website_parcel"
+    Column    |  Type   |                          Modifiers
+--------------+---------+-------------------------------------------------------------
+ id           | integer | not null default nextval('website_parcel_id_seq'::regclass)
+ objectid     | text    |
+ parcelid     | text    |
+ kivapin      | text    |
+ subdivision  | text    |
+ block        | text    |
+ lot          | text    |
+ datecreated  | text    |
+ landusecode  | text    |
+ apn          | text    |
+ parceltype   | text    |
+ status       | text    |
+ condo        | text    |
+ platname     | text    |
+ fraction     | text    |
+ prefix       | text    |
+ suite        | text    |
+ own_name     | text    |
+ own_addr     | text    |
+ own_city     | text    |
+ own_zip      | text    |
+ blvdfront    | text    |
+ lastupdate   | text    |
+ shape_length | text    |
+ shape_area   | text    |
+ latitude     | text    |
+ longitude    | text    |
+ location1    | text    |
+Indexes:
+    "website_parcel_pkey" PRIMARY KEY, btree (id)
