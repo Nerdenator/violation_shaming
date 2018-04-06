@@ -1,0 +1,1 @@
+COPY website_parcel(objectid, parcelid, kivapin, subdivision, block, lot, datecreated, landusecode, apn, parceltype, status, condo, platname, fraction, prefix, suite, own_name, own_addr, own_city, own_zip, blvdfront, lastupdate, shape_length, shape_area, latitude, longitude, location1) from '/home/aaron/parcel_data.csv' DELIMITER ',' CSV HEADER;
