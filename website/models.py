@@ -5,7 +5,7 @@ from django.db import models
 class Parcel(models.Model):
     objectid = models.TextField(null=True, blank=True)
     parcelid = models.TextField(null=True, blank=True)
-    kivapin = models.TextField(null=True, blank=True)
+    kivapin = models.TextField(unique=True, default="0")
     subdivision = models.TextField(null=True, blank=True)
     block = models.TextField(null=True, blank=True)
     lot = models.TextField(null=True, blank=True)
@@ -31,6 +31,9 @@ class Parcel(models.Model):
     longitude = models.TextField(null=True, blank=True)
     location1 = models.TextField(null=True, blank=True)
 
+    def __str__(self):
+        return self.own_name
+
 
 class Violation(models.Model):
     property_violation_id = models.TextField(null=True, blank=True)
@@ -50,7 +53,8 @@ class Violation(models.Model):
     zip_code = models.TextField(null=True, blank=True)
     latitude = models.TextField(null=True, blank=True)
     longitude = models.TextField(null=True, blank=True)
-    kiva_pin = models.TextField(null=True, blank=True)
+    # kivapin = models.TextField(null=True, blank=True)
+    kivapin = models.ForeignKey(Parcel, to_field="kivapin", on_delete= models.CASCADE)
     council_district = models.TextField(null=True, blank=True)
     police_patrol = models.TextField(null=True, blank=True)
     inspection_area = models.TextField(null=True, blank=True)
