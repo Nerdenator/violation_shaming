@@ -1,11 +1,11 @@
-from django.db import models
+from django.db import models, connection
 
 
-# Create your models here.
 class Parcel(models.Model):
     objectid = models.TextField(null=True, blank=True)
     parcelid = models.TextField(null=True, blank=True)
     kivapin = models.TextField(unique=True, default="0")
+    address = models.TextField(null=True, blank=True)
     subdivision = models.TextField(null=True, blank=True)
     block = models.TextField(null=True, blank=True)
     lot = models.TextField(null=True, blank=True)
@@ -53,10 +53,16 @@ class Violation(models.Model):
     zip_code = models.TextField(null=True, blank=True)
     latitude = models.TextField(null=True, blank=True)
     longitude = models.TextField(null=True, blank=True)
-    # kivapin = models.TextField(null=True, blank=True)
-    kivapin = models.ForeignKey(Parcel, to_field="kivapin", on_delete= models.CASCADE)
+    kivapin = models.TextField(null=True, blank=True)
+    #kivapin = models.ForeignKey(Parcel, to_field="kivapin", on_delete= models.CASCADE)
     council_district = models.TextField(null=True, blank=True)
     police_patrol = models.TextField(null=True, blank=True)
     inspection_area = models.TextField(null=True, blank=True)
     neighborhood = models.TextField(null=True, blank=True)
     code_violation_location = models.TextField(null=True, blank=True)
+
+
+# def get_top_ten_violators():
+#     with connection.cursor() as cursor:
+#         cursor.execute("SELECT p.own_name FROM website_parcel p INNER JOIN website_violation v ON p.kivapin = v.kivapin")
+#         return cursor.fetchall()

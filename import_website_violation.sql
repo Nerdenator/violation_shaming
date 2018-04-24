@@ -20,4 +20,4 @@ council_district,
 police_patrol,
 inspection_area,
 neighborhood,
-code_violation_location) from '/home/aaron/property_violations.csv' DELIMITER ',' CSV HEADER;
+code_violation_location) from '/home/aaron/violation_data.csv' DELIMITER ',' CSV HEADER;
