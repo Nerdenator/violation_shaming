@@ -20,5 +20,5 @@ from website import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.violations_per_county, name='index')
+    path('', views.basic_county_data, name='index')
 ]

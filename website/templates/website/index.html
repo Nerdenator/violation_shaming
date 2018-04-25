@@ -5,6 +5,21 @@
     <title>Title</title>
 </head>
 <body>
-    {{ violations_per_county }}
+<table>
+    <thead>
+    <tr>
+        {% for i in violations_per_county.keys %}
+            <th>{{ i }}</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tr>
+        {% for i in violations_per_county.values %}
+            <td>{{ i }}</td>
+        {% endfor %}
+    </tr>
+
+</table>
+
 </body>
 </html>
