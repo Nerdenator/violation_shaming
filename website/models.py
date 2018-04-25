@@ -4,7 +4,7 @@ from django.db import models, connection
 class Parcel(models.Model):
     objectid = models.TextField(null=True, blank=True)
     parcelid = models.TextField(null=True, blank=True)
-    kivapin = models.TextField(unique=True, default="0")
+    kivapin = models.TextField(unique=True, default="0", null=True)
     address = models.TextField(null=True, blank=True)
     subdivision = models.TextField(null=True, blank=True)
     block = models.TextField(null=True, blank=True)
@@ -22,6 +22,7 @@ class Parcel(models.Model):
     own_name = models.TextField(null=True, blank=True)
     own_addr = models.TextField(null=True, blank=True)
     own_city = models.TextField(null=True, blank=True)
+    own_state = models.TextField(null=True, blank=True)
     own_zip = models.TextField(null=True, blank=True)
     blvdfront = models.TextField(null=True, blank=True)
     lastupdate = models.TextField(null=True, blank=True)
@@ -54,7 +55,7 @@ class Violation(models.Model):
     latitude = models.TextField(null=True, blank=True)
     longitude = models.TextField(null=True, blank=True)
     kivapin = models.TextField(null=True, blank=True)
-    #kivapin = models.ForeignKey(Parcel, to_field="kivapin", on_delete= models.CASCADE)
+    # kivapin = models.ForeignKey(Parcel, to_field="kivapin", on_delete= models.CASCADE)
     council_district = models.TextField(null=True, blank=True)
     police_patrol = models.TextField(null=True, blank=True)
     inspection_area = models.TextField(null=True, blank=True)
@@ -62,7 +63,14 @@ class Violation(models.Model):
     code_violation_location = models.TextField(null=True, blank=True)
 
 
+# def violations_per_county():
+#     county_count = {counted: Violation.objects.filter(county=counted).count() for counted in
+#                     ('Platte', 'Clay', 'Cass', 'Jackson')}
+#     return county_count
+#
+
 # def get_top_ten_violators():
 #     with connection.cursor() as cursor:
-#         cursor.execute("SELECT p.own_name FROM website_parcel p INNER JOIN website_violation v ON p.kivapin = v.kivapin")
+#         cursor.execute(
+#             "SELECT p.own_name FROM website_parcel p INNER JOIN website_violation v ON p.kivapin = v.kivapin")
 #         return cursor.fetchall()
