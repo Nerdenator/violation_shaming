@@ -1,14 +1,12 @@
 {% extends 'website/base.html' %}
 {% load app_filters %}
 {% block main_container %}
-    <div>
 
-    </div>
     <h2>Open Violations by County</h2>
     <div>Kansas City, Missouri sits within the bounds of four counties. These are the open violations for each county.
     </div>
 
-    <table>
+    <table class="center">
         {% for key, value in violations_per_county.items %}
             <tr>
                 <td>{{ key }}</td>
@@ -16,6 +14,6 @@
             </tr>
         {% endfor %}
     </table>
-
+    <b>As you can see, Jackson County, MO is the leader in violations of Kansas City's property codes.</b>
 
 {% endblock main_container %}
