@@ -12,6 +12,8 @@ class Command(BaseCommand):
                 headers = f.readline()
                 split_headers = headers.strip().split(",")
                 print(split_headers)
+                # and now, to build a raw sql statement
+
         except Exception as ex:
             print(ex)
 
