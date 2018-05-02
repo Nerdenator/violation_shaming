@@ -5,4 +5,4 @@ install:
   - pip install -r requirements.txt
 script:
   - bandit -r .
-  - python3 -m pyt -f ../violation_shaming/website/*.py
+ # - python3 -m pyt -f ../violation_shaming/website/*.py
