@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from subprocess import call
+from subprocess import call # nosec
 from pathlib import Path
 
 
