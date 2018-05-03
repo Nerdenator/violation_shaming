@@ -12,16 +12,14 @@ class Command(BaseCommand):
         try:
             with open(file) as f:
                 headers = f.readline()
-                split_headers = headers.strip().split(",")
+                split_headers = headers.replace(" ", "").split(",")
                 print(split_headers)
                 myString = ", ".join(split_headers)
                 print(myString)
-                # and now, to build a raw sql statement to annoy Bandit.
                 query = "COPY website_parcel(" + myString + ") from '" + file + "' DELIMITER ',' CSV HEADER;"
                 print(query)
                 with connection.cursor() as cursor:
                     cursor.execute(query)
-
 
         except Exception as ex:
             print(ex)
