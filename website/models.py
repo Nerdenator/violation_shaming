@@ -54,8 +54,8 @@ class Violation(models.Model):
     zip_code = models.TextField(null=True, blank=True)
     latitude = models.TextField(null=True, blank=True)
     longitude = models.TextField(null=True, blank=True)
-    #kivapin = models.TextField(null=True, blank=True)
-    kivapin = models.ForeignKey(Parcel, to_field="kivapin", on_delete= models.CASCADE)
+    # kivapin = models.TextField(null=True, blank=True)
+    kivapin = models.ForeignKey(Parcel, to_field="kivapin", on_delete=models.CASCADE)
     council_district = models.TextField(null=True, blank=True)
     police_patrol = models.TextField(null=True, blank=True)
     inspection_area = models.TextField(null=True, blank=True)
@@ -74,3 +74,17 @@ class Violation(models.Model):
 #         cursor.execute(
 #             "SELECT p.own_name FROM website_parcel p INNER JOIN website_violation v ON p.kivapin = v.kivapin")
 #         return cursor.fetchall()
+
+def top_10_violating_properties_jackson():
+    with connection.cursor() as cursor:
+        cursor.execute(
+            "SELECT website_violation.address,"
+            " count(website_violation.address) AS address_count"
+            " FROM website_violation "
+            " WHERE county = 'Jackson' "
+            " AND website_violation.status = 'Open' "
+            " GROUP BY website_violation.address "
+            " ORDER BY address_count DESC"
+        )
+
+

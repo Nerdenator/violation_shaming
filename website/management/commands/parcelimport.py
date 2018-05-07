@@ -15,9 +15,7 @@ class Command(BaseCommand):
                 split_headers = headers.replace(" ", "").split(",")
                 print(split_headers)
                 myString = ", ".join(split_headers)
-                print(myString)
                 query = "COPY website_parcel(" + myString + ") from '" + file + "' DELIMITER ',' CSV HEADER;"
-                print(query)
                 with connection.cursor() as cursor:
                     cursor.execute(query)
 
