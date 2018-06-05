@@ -22,9 +22,12 @@
 {#        </tr>#}
 {#    {% endfor %}#}
     <h2>Top 10 Violating Owners: Jackson County</h2>
-    {% for i in jackson_top_10_owners%}
+    <table>
+    {% for key, value in jackson_top_10_owners%}
         <tr>
-            <td>{{ i }}</td>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
         </tr>
     {% endfor %}
+    </table>
 {% endblock main_container %}
