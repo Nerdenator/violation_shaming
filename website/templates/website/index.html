@@ -15,5 +15,17 @@
         {% endfor %}
     </table>
     <b>As you can see, Jackson County, MO is the leader in violations of Kansas City's property codes.</b>
-
+{#    <h2>Top 10 Violating Properties: Jackson County</h2>#}
+{#    {% for i in jackson_top_10.items %}#}
+{#        <tr>#}
+{#            <td>{{ i }}</td>#}
+{#        </tr>#}
+{#    {% endfor %}#}
+    <h2>Top 10 Violating Owners: Jackson County</h2>
+    {% for key, value in jackson_top_10_owners.items %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+        </tr>
+    {% endfor %}
 {% endblock main_container %}

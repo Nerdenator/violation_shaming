@@ -78,13 +78,31 @@ class Violation(models.Model):
 def top_10_violating_properties_jackson():
     with connection.cursor() as cursor:
         cursor.execute(
-            "SELECT website_violation.address,"
-            " count(website_violation.address) AS address_count"
-            " FROM website_violation "
-            " WHERE county = 'Jackson' "
-            " AND website_violation.status = 'Open' "
-            " GROUP BY website_violation.address "
-            " ORDER BY address_count DESC"
+            "SELECT website_violation.address, count(website_violation.address) "
+            "AS address_count, website_parcel.own_name, website_parcel.own_city, website_parcel.own_state "
+            "FROM website_violation "
+            "INNER JOIN website_parcel "
+            "ON website_parcel.kivapin = website_violation.kivapin "
+            "WHERE website_violation.county = 'Jackson' "
+            "AND website_violation.status = 'Open' "
+            "GROUP BY website_violation.address, website_parcel.own_name, website_parcel.own_city, website_parcel.own_state "
+            "ORDER BY address_count DESC"
         )
+        results = cursor.fetchall()
+        return results
 
 
+def top_10_violating_owners_jackson():
+    with connection.cursor() as cursor:
+        cursor.execute(
+            "SELECT count(website_violation.address) AS address_count, website_parcel.own_name, website_parcel.own_city, website_parcel.own_state "
+            "FROM website_parcel "
+            "INNER JOIN website_violation "
+            "ON website_violation.kivapin = website_parcel.kivapin "
+            "WHERE website_violation.county = 'Jackson' " 
+            "AND website_violation.status = 'Open' "
+            "GROUP BY website_parcel.own_name, website_parcel.own_city, website_parcel.own_state "
+            "ORDER BY address_count DESC;"
+        )
+        results = cursor.fetchall()
+        return results
