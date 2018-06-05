@@ -99,10 +99,10 @@ def top_10_violating_owners_jackson():
             "FROM website_parcel "
             "INNER JOIN website_violation "
             "ON website_violation.kivapin = website_parcel.kivapin "
-            "WHERE website_violation.county = 'Jackson' " 
+            "WHERE website_violation.county = 'Jackson' "
             "AND website_violation.status = 'Open' "
             "GROUP BY website_parcel.own_name, website_parcel.own_city, website_parcel.own_state "
-            "ORDER BY address_count DESC;"
-        )
+            "ORDER BY address_count DESC "
+            "LIMIT 10;")
         results = cursor.fetchall()
         return results
