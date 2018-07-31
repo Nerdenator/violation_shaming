@@ -1,12 +1,22 @@
 {% extends 'website/base.html' %}
 {% load app_filters %}
 {% block main_container %}
+    <h1>Violation Shaming</h1>
+    <hr/>
+    <h3>
+        Open Violations by County
+    </h3>
+    <p>
+        Kansas City, Missouri sits within the bounds of four counties. These are the open violations for each county.
+    </p>
 
-    <h2>Open Violations by County</h2>
-    <div>Kansas City, Missouri sits within the bounds of four counties. These are the open violations for each county.
-    </div>
-
-    <table class="center">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>County</th>
+                <th># of Violating Properties</th>
+            </tr>
+        </thead>
         {% for key, value in violations_per_county.items %}
             <tr>
                 <td>{{ key }}</td>
@@ -14,15 +24,17 @@
             </tr>
         {% endfor %}
     </table>
-    <b>As you can see, Jackson County, MO is the leader in violations of Kansas City's property codes.</b>
-    {#    <h2>Top 10 Violating Properties: Jackson County</h2>#}
-    {#    {% for i in jackson_top_10.items %}#}
-    {#        <tr>#}
-    {#            <td>{{ i }}</td>#}
-    {#        </tr>#}
-    {#    {% endfor %}#}
-    <h2>Top 10 Violating Owners: Jackson County</h2>
-    <table>
+    <p>As you can see, Jackson County, MO is the leader in violations of Kansas City's property codes.</p>
+    <h3>Top 10 Violating Owners: Jackson County</h3>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th># of Violating Properties</th>
+                <th>Owner Legal Name</th>
+                <th>Owner City</th>
+                <th>Owner State</th>
+            </tr>
+        </thead>
         {% for key, value1, value2, value3 in jackson_top_10_owners %}
             <tr>
                 <td>{{ key }}</td>
