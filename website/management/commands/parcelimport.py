@@ -8,9 +8,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         home = str(Path.home())
+        print(home)
         file = home + "/rows.csv"
         try:
             with open(file) as f:
+                print("thing")
                 headers = f.readline()
                 split_headers = headers.replace(" ", "").split(",")
                 print(split_headers)

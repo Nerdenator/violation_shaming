@@ -35,7 +35,6 @@ class Parcel(models.Model):
     def __str__(self):
         return self.own_name
 
-
 class Violation(models.Model):
     property_violation_id = models.TextField(null=True, blank=True)
     case_id = models.TextField(null=True, blank=True)
@@ -54,14 +53,12 @@ class Violation(models.Model):
     zip_code = models.TextField(null=True, blank=True)
     latitude = models.TextField(null=True, blank=True)
     longitude = models.TextField(null=True, blank=True)
-    # kivapin = models.TextField(null=True, blank=True)
     kivapin = models.ForeignKey(Parcel, to_field="kivapin", on_delete=models.CASCADE)
     council_district = models.TextField(null=True, blank=True)
     police_patrol = models.TextField(null=True, blank=True)
     inspection_area = models.TextField(null=True, blank=True)
     neighborhood = models.TextField(null=True, blank=True)
     code_violation_location = models.TextField(null=True, blank=True)
-
 
 # def violations_per_county():
 #     county_count = {counted: Violation.objects.filter(county=counted).count() for counted in
