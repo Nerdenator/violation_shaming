@@ -53,7 +53,37 @@ class Violation(models.Model):
     zipcode = models.TextField(null=True, blank=True)
     latitude = models.TextField(null=True, blank=True)
     longitude = models.TextField(null=True, blank=True)
-    KIVAPIN = models.ForeignKey(Parcel, to_field="kivapin", on_delete=models.CASCADE)
+    kivapin = models.ForeignKey(Parcel, to_field="kivapin", on_delete=models.CASCADE)
+    councildistrict = models.TextField(null=True, blank=True)
+    policepatrolarea = models.TextField(null=True, blank=True)
+    inspectionarea = models.TextField(null=True, blank=True)
+    neighborhood = models.TextField(null=True, blank=True)
+    codeviolationlocation = models.TextField(null=True, blank=True)
+
+
+class ViolationStaging(models.Model):
+    """
+    The purpose of this table is to create a table that can be narrowed down to fit the
+    constraints of Violation table. Violation needs a non-0 kivapin.
+    """
+    propertyviolationid = models.TextField(null=True, blank=True)
+    caseid = models.TextField(null=True, blank=True)
+    status = models.TextField(null=True, blank=True)
+    caseopeneddate = models.TextField(null=True, blank=True)
+    casecloseddate = models.TextField(null=True, blank=True)
+    daysopen = models.TextField(null=True, blank=True)
+    violationcode = models.TextField(null=True, blank=True)
+    violationdescription = models.TextField(null=True, blank=True)
+    ordinancenumber = models.TextField(null=True, blank=True)
+    ordinancechapter = models.TextField(null=True, blank=True)
+    violationentrydate = models.TextField(null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
+    county = models.TextField(null=True, blank=True)
+    state = models.TextField(null=True, blank=True)
+    zipcode = models.TextField(null=True, blank=True)
+    latitude = models.TextField(null=True, blank=True)
+    longitude = models.TextField(null=True, blank=True)
+    kivapin = models.TextField(null=True, blank=True)
     councildistrict = models.TextField(null=True, blank=True)
     policepatrolarea = models.TextField(null=True, blank=True)
     inspectionarea = models.TextField(null=True, blank=True)

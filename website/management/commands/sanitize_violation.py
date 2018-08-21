@@ -4,15 +4,12 @@ from django.db import connection
 
 
 class Command(BaseCommand):
-    help = 'Creates a PostgreSQL COPY statement using the header row of the parcel .csv file'
+    help = 'Creates a table filled with Violation csv, then sanitizes it for import to Violation table.'
 
     def handle(self, *args, **options):
         home = str(Path.home())
         print(home)
-        import socket
-
-        file = home + "/parcels.csv"
-        print(socket.gethostname())
+        file = home + "/violation.csv"
         try:
             with open(file) as f:
                 print("thing")
@@ -20,7 +17,7 @@ class Command(BaseCommand):
                 split_headers = headers.replace(" ", "").split(",")
                 print(split_headers)
                 myString = ", ".join(split_headers)
-                query = "COPY website_parcel(" + myString + ") from '" + file + "' DELIMITER ',' CSV HEADER;"
+                query = "COPY website_violation(" + myString + ") from '" + file + "' DELIMITER ',' CSV HEADER;"
                 with connection.cursor() as cursor:
                     cursor.execute(query)
 

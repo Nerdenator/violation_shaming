@@ -9,6 +9,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         home = str(Path.home())
         try:
-            call(["wget", "https://data.kcmo.org/api/views/vrys-qgrz/rows.csv", "--directory-prefix=" + home])
+            call(["wget", "https://data.kcmo.org/api/views/vrys-qgrz/rows.csv", "--directory-prefix=" + home,
+                  "--output-document=parcels.csv"])
         except Exception:
             raise CommandError("Can't get the data. Try again later. Or, you know... don't.")
