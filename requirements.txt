@@ -1,7 +1,7 @@
 bandit==1.4.0
 certifi==2018.4.16
 chardet==3.0.4
-Django==2.0.2
+Django==2.2.10
 gitdb2==2.0.3
 GitPython==2.1.9
 graphviz==0.8.2
