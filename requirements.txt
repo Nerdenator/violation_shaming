@@ -6,7 +6,7 @@ gitdb2==2.0.3
 GitPython==2.1.9
 graphviz==0.8.2
 idna==2.6
-Jinja2==2.10
+Jinja2==2.11.3
 MarkupSafe==1.0
 pbr==4.0.2
 psycopg2==2.7.4
